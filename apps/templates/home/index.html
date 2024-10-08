@@ -356,10 +356,7 @@
                         <tbody>
                         {% for device in device_details %}
                         <tr>
-                            <th scope="row">
-                                <a href="{% url 'device_list' %}?search={{ device.device_name }}">
-                                    {{ device.device_name }}</a>
-                            </th>
+                            <th scope="row">{{ device.device_name }}</th>
                             <td>{{device.operator}}</td>
                             <td>{{ device.inspector }}</td>
                             <td>
@@ -381,44 +378,44 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-header border-0">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h3 class="mb-0">剩余毛坯数量</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <!-- Projects table -->
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                        <tr>
-                            <th scope="col">毛坯编码</th>
-                            <th scope="col">毛坯名称</th>
-                            <th scope="col">剩余数量</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for raw in remaining_quantities %}
-                        <tr>
-                            <th scope="row">
-                                <a href="{% url 'raw_list' %}?search={{ raw.raw_code }}">{{ raw.raw_code }}</a>
-                            </th>
-                            <td>
-                                {{ raw.raw_name }}
-                            </td>
-                            <td>
-                                {{ raw.remaining_quantity }}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+            <div class="col-xl-4">
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="mb-0">剩余毛坯数量</h3>
                 </div>
             </div>
         </div>
+        <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">毛坯编码</th>
+                    <th scope="col">毛坯名称</th>
+                    <th scope="col">剩余数量</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for raw in remaining_quantities %}
+                <tr>
+                    <th scope="row">
+                        {{ raw.raw_code }}
+                    </th>
+                    <td>
+                        {{ raw.raw_name }}
+                    </td>
+                    <td>
+                        {{ raw.remaining_quantity }}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-header border-0">
@@ -443,8 +440,7 @@
                         {% for order in order_details_combined %}
                         <tr>
                             <th scope="row">
-                                <a href="{% url 'order_list' %}?search={{ order.order_code }}">
-                                    {{ order.order_code }}</a>
+                                {{ order.order_code }}
                             </th>
                             <td>
                                 {{ order.end_date }}
@@ -454,9 +450,9 @@
                             </td>
                             <td>
                                 {% if order.estimated_delivery_date %}
-                                {{ order.estimated_delivery_date|date:"Y-m-d H:i" }}
+                                    {{ order.estimated_delivery_date|date:"Y-m-d H:i" }}
                                 {% else %}
-                                无预计交付日期
+                                    无预计交付日期
                                 {% endif %}
                             </td>
                         </tr>
@@ -466,6 +462,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 

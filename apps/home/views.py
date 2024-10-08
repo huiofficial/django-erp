@@ -360,7 +360,7 @@ def index(request):
 
         'order_details_combined': order_details_combined,
 
-        'remaining_quantities': remaining_quantities,
+        'remaining_quantities': remaining_quantities[:29],
     }
 
     html_template = loader.get_template('home/index.html')
